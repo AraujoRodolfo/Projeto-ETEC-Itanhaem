@@ -1,0 +1,43 @@
+<?php
+	namespace App\Model;
+	use App\Model\Model;
+
+	class ModelPost extends Model {
+
+		private $id;
+		//id do usuario que criou o post
+		private $idUser;
+		//caso esteja atualizando um post que ja foi criado
+		private $idPost;
+		private $titulo;
+		private $descricao;
+		private $dtPost;
+		private $status;
+		/**
+		 * 	caso esteja programado para aparecer no site a partir de determinado dia ou horario
+		 *	este campo deverá receber a data-hora.
+		 */
+		private $programado;
+		//recebe o caminho de anexos (imagens ou documentos)
+		private $anexo = [];
+
+		//Getters
+		public function getId(){ return $this->id; }
+		public function getIdUser(){ return $this->idUser; }
+		public function getIdPost(){ return $this->idPost; }
+		public function getTitulo(){ return $this->titulo; }
+		public function getDescricao(){ return $this->descricao; }
+		public function getDtPost(){ return $this->dtPost; }
+		public function getStatus(){ return $this->status; }
+		public function getProgramado(){ return $this->programado; }
+		public function getAnexo(){ return $this->anexo; }
+		
+		//Setters
+		public function setId(int $id ){ $this->id = $id; }
+		public function setIdUser(int $idUser ){ $this->idUser = $idUser; }
+		public function setIdPost(int $idPost){ $this->idPost = $idPost; }
+		public function setTitulo($titulo){
+			
+		}
+
+	}

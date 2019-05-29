@@ -1,0 +1,1 @@
+var DIR_PAGE = "https://etec.profrodolfo.com.br/ProjetoETEC/";
