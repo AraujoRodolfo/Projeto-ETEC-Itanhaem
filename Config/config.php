@@ -1,6 +1,6 @@
 <?php
     //caso nao esteja no root, coloacar o nome da subpasta exemplo: "sub/"
-        $subpasta = "ProjetoETEC/";
+        $subpasta = "";
         
     /**
      * ROTAS BASE
