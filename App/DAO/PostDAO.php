@@ -18,6 +18,9 @@
 			for($i = 0; $i < count($rows); $i++ ){
 				$res[$i] = new ModelPost();
 				$res[$i]->setTitulo( $rows[$i]['titulo'] );
+				$res[$i]->setDescricao($rows[$i]['descricao']);
+				$res[$i]->setDescricao($rows[$i]['dt_post']);
+				$res[$i]->setProgramado($rows[$i]['programado']);
 				$res[$i]->decryptAll();
 			}
 			
