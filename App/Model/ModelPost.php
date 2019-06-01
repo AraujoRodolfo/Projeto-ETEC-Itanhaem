@@ -36,8 +36,23 @@
 		public function setId(int $id ){ $this->id = $id; }
 		public function setIdUser(int $idUser ){ $this->idUser = $idUser; }
 		public function setIdPost(int $idPost){ $this->idPost = $idPost; }
-		public function setTitulo($titulo){
-			
+		public function setTitulo($titulo){ $this->titulo = $titulo; }
+		public function setDescricao($descricao){ $this->descricao = $descricao; }
+		public function setDtPost($dt){ $this->dtPost = $dt; }
+		public function setStatus($status){ $this->status = $status; }
+		public function setProgramado($programado){ $this->programado = $programado; }
+		public function setAnexo($anexo){ $this->anexo = $anexo; }
+
+		public function encryptAll(){
+
+		}
+
+		public function decryptAll(){
+			foreach(get_object_vars($this) as $key => $value){
+				if($key != 'anexo'){
+					$this->$key = $this->decrypt($value,CRYPT_KEY);
+				}
+			}
 		}
 
 	}
