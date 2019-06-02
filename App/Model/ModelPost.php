@@ -45,7 +45,6 @@
 
 		public function encryptAll(){
 			$excessoes = ['anexo' => 1,'dtPost' => 1,'programado' => 1];
-			array_values()
 
 			foreach(get_object_vars($this) as $key => $value){
 				//se o atributo nao existir no array de excessoes, encripte.
