@@ -5,6 +5,8 @@
     use App\Controller\Controller;
     use App\DAO\PostDAO;
     use App\Model\ModelPost;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
     
     class ControllerHome extends Controller{
 
@@ -20,7 +22,7 @@
 
         public function index(){
             //MODEL ===========================================================
-            $postDAO = new PostDAO();
+            $postDAO = new PostDAO()
             //VIEW ============================================================
             $render = new ClassRender();
             $render->setTitle('Ensino Médio e Técnico gratuito em Itanhaém');
@@ -49,6 +51,11 @@
 
         public function contato(){
             echo "contato de 4º grau";
+        }
+
+        //metodo para testar disparos de email via PHPMailer
+        public function enviarEmail(){
+
         }
         
     }
