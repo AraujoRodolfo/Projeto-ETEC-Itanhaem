@@ -33,7 +33,7 @@
     /**
      * DADOS DE ACESSO AO BANCO DE DADOS
      **/
-        define('DB_NAME','exemploMVC');
+        define('DB_NAME','etecitan_dev');
         define('DB_HOST','localhost');
         define('DB_USER','etecitan_dev');
         define('DB_PW','9sA_o4~yBf5V');

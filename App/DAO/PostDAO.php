@@ -13,9 +13,7 @@
 			$ordenar	= "dt_post DESC";
 			$alcance 	= $qtd;
 
-			//$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance);
-
-			$res = ['teste'];
+			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance);
 
 			// for($i = 0; $i < count($rows); $i++ ){
 			// 	$res[$i] = new ModelPost();
