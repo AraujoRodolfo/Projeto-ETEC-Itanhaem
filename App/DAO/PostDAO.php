@@ -21,7 +21,7 @@
 				$obj[$i]->setDescricao($res[$i]['descricao']);
 				$obj[$i]->setDtPost($res[$i]['dt_post']);
 				$obj[$i]->setProgramado($res[$i]['programado']);
-				$obj[$i]->decryptAll();
+				//$obj[$i]->decryptAll();
 			}
 			
 			return $obj;
