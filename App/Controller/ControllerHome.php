@@ -20,7 +20,7 @@
 
         public function index(){
             //MODEL ===========================================================
-            //$postDAO = new PostDAO();
+            $postDAO = new PostDAO();
             //VIEW ============================================================
             $render = new ClassRender();
             $render->setTitle('Ensino Médio e Técnico gratuito em Itanhaém');
@@ -30,7 +30,7 @@
             $render->setDir('index');
             //informações que deverão aparecer na página vindas do DB
             //$render->list +=["ultimas noticias"     => $postDAO->selectPosts(3)];
-            $render->list +=["eventos e atividades" => ''];
+            $render->list +=["eventos e atividades" => $postDAO->selectPosts(3)];
             $render->list +=["ensino tecnico"       => ''];
             $render->list +=["etim"                 => ''];
             $render->list +=["corpo docente"        => ''];
