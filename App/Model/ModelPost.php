@@ -44,22 +44,23 @@
 		public function setAnexo($anexo){ $this->anexo = $anexo; }
 
 		public function encryptAll(){
-			$excessoes = ['anexo','dtPost','programado'];
+			$excessoes = ['anexo' => 1,'dtPost' => 1,'programado' => 1];
+			array_values()
 
 			foreach(get_object_vars($this) as $key => $value){
 				//se o atributo nao existir no array de excessoes, encripte.
-				if(!array_key_exists($key,$excessoes)){
+				if(!in_array($key,$excessoes)){
 					$this->$key = $this->encrypt($value,CRYPT_KEY);
 				}
 			}
 		}
 
 		public function decryptAll(){
-			$excessoes = ['anexo','dtPost','programado'];
+			$excessoes = ['anexo' => 1,'dtPost' => 1,'programado' => 1];
 
 			foreach(get_object_vars($this) as $key => $value){
 				//se o atributo nao existir no array de excessoes, decripte.
-				if(!array_key_exists($key,$excessoes)){
+				if(!in_array($key,$excessoes)){
 					$this->$key = $this->decrypt($value,CRYPT_KEY);
 				}
 			}
