@@ -21,6 +21,7 @@
         }
         
         protected function Select($tabela, $colunas, $condicao,$ordenar = null, $alcance = null){
+
             $sql = "SELECT $colunas FROM $tabela WHERE $condicao ";
 
             if($ordenar != null){
@@ -32,7 +33,7 @@
             }
 
             $this->DB = $this->connectDB()->prepare($sql);
-            $this->DB->execute()
+            $this->DB->execute();
             if($this->DB->rowCount() > 0){
                 while($fetch = $this->DB->fetch(\PDO::FETCH_ASSOC)){
                     $this->res[] = $fetch;
