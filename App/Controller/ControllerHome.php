@@ -29,7 +29,7 @@
             $render->setDirBase($this->dirbase);
             $render->setDir('index');
             //informações que deverão aparecer na página vindas do DB
-            //$render->list +=["ultimas noticias"     => $postDAO->selectPosts(3)];
+            $render->list +=["ultimas noticias"     => $postDAO->selectPosts(3)];
             $render->list +=["eventos e atividades" => ''];
             $render->list +=["ensino tecnico"       => ''];
             $render->list +=["etim"                 => ''];
