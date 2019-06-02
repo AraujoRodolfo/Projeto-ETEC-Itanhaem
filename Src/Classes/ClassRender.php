@@ -47,7 +47,7 @@
         //verifica se tem conteudo para adicionar no header
         public function addHeader(){
             //verifica se existe um arquivo header.php na pasta
-            if(file_exists(DIR_REQ."App/View/".$this->getDirBase()."/".$this->getDir()."/header.php")){
+            if(file_exists(DIR_REQ."App/View/".$this->getDirBase()."/header.php")){
                 //se ele existir, da um include
                 include_once DIR_REQ."App/View/".$this->getDirBase()."/header.php";
                 /**
