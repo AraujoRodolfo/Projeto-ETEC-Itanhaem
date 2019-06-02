@@ -20,7 +20,7 @@
 		private $programado;
 		//recebe o caminho de anexos (imagens ou documentos)
 		private $anexo = [];
-		private $excessoes = ['id','idUser','anexo','dtPost','programado','status'];
+		private $excessoes = ['id','idUser','anexo','dtPost','programado','status','excessoes'];
 
 		//Getters
 		public function getId(){ return $this->id; }
