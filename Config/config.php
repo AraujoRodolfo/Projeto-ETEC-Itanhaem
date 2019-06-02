@@ -35,8 +35,8 @@
      **/
         define('DB_NAME','exemploMVC');
         define('DB_HOST','localhost');
-        define('DB_USER','o0jdc0o');
-        define('DB_PW','');
+        define('DB_USER','etecitan_dev');
+        define('DB_PW','9sA_o4~yBf5V');
     
     /**
      * DADOS DE ENVIO DE MAIL
