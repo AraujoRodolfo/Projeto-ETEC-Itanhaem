@@ -1,4 +1,9 @@
 <?php
+    // mostrar erros
+    ini_set('display_errors',1);
+    ini_set('display_startup_erros',1);
+    error_reporting(E_ALL);
+    
     //caso nao esteja no root, coloacar o nome da subpasta exemplo: "sub/"
         $subpasta = "";
         
