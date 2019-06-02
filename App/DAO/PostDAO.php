@@ -19,8 +19,8 @@
 				$obj[$i] = new ModelPost();
 				$obj[$i]->setTitulo( $res[$i]['titulo'] );
 				$obj[$i]->setDescricao($res[$i]['descricao']);
-				//$obj[$i]->setDescricao($res[$i]['dt_post']);
-				//$obj[$i]->setProgramado($res[$i]['programado']);
+				$obj[$i]->setDtPost($res[$i]['dt_post']);
+				$obj[$i]->setProgramado($res[$i]['programado']);
 				$obj[$i]->decryptAll();
 			}
 			
