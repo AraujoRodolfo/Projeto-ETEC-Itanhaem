@@ -20,7 +20,10 @@
 		private $programado;
 		//recebe o caminho de anexos (imagens ou documentos)
 		private $anexo = [];
-		private $excessoes = ['id','idUser','anexo','dtPost','programado','status','excessoes'];
+
+		public function __construct(){
+			$this->excessoes = ['id','idUser','anexo','dtPost','programado','status','excessoes'];
+		}
 
 		//Getters
 		public function getId(){ return $this->id; }
@@ -43,25 +46,4 @@
 		public function setStatus($status){ $this->status = $status; }
 		public function setProgramado($programado){ $this->programado = $programado; }
 		public function setAnexo($anexo){ $this->anexo = $anexo; }
-
-		public function encryptAll(){
-			
-
-			foreach(get_object_vars($this) as $key => $value){
-				//se o atributo nao existir no array de excessoes, encripte.
-				if(!in_array($key,$this->excessoes)){
-					$this->$key = $this->encrypt($value,CRYPT_KEY);
-				}
-			}
-		}
-
-		public function decryptAll(){
-			foreach(get_object_vars($this) as $key => $value){
-				//se o atributo nao existir no array de excessoes, decripte.
-				if(!in_array($key,$this->excessoes)){
-					$this->$key = $this->decrypt($value,CRYPT_KEY);
-				}
-			}
-		}
-
 	}
