@@ -34,6 +34,8 @@
 				$obj[$i]->setDtPost($res[$i]['dt_post']);
 				$obj[$i]->setProgramado($res[$i]['programado']);
 
+				echo '<br>'.$this->decrypt($res[$i]['nome'], CRYPT_KEY);
+
 				$user = new ModelUsuario();
 				$user->setNome($this->decrypt($res[$i]['nome'], CRYPT_KEY));
 				$user->setFoto($this->decrypt($res[$i]['foto'], CRYPT_KEY));
