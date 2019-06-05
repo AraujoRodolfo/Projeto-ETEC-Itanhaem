@@ -24,9 +24,6 @@
 			$ordenar	= "dt_post DESC";
 			$alcance 	= $qtd;
 
-			echo $join[0]['nm_tab1'];
-			return $join;
-
 			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance, $join);
 
 			for($i = 0; $i < count($res); $i++ ){
