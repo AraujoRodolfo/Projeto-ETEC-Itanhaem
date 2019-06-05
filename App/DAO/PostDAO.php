@@ -8,12 +8,25 @@
 
 		public function selectPosts(int $qtd){
 			$tabela 	= "post";
-			$colunas 	= "titulo, descricao, dt_post, programado";
-			$condicao	= 'status = "ativo"' ;
+			//dados da tabe de posts
+			$colunas 	= "titulo, descricao, dt_post, programado,";
+			//dados da tabela de usuarios
+			$colunas	.= " nome, foto ";
+
+			$join 		= [0 =>	[
+				'nm_tab1' 	=> 'usuario',
+				'nm_tab2'	=>	'post',
+				'col_tab1' 	=> 'id',
+				'col_tab2' 	=> 'id'
+			];
+
+			$condicao	= 'status = "ativo"';
 			$ordenar	= "dt_post DESC";
 			$alcance 	= $qtd;
 
 			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance);
+
+			return $res;
 
 			for($i = 0; $i < count($res); $i++ ){
 				$obj[$i] = new ModelPost();

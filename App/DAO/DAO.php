@@ -22,16 +22,24 @@
             return $this->res;  
         }
         
-        protected function Select($tabela, $colunas, $condicao,$ordenar = null, $alcance = null){
+        protected function Select($tabela, $colunas, $condicao, $ordenar = false, $alcance = false, $join = false){
 
-            $sql = "SELECT $colunas FROM $tabela WHERE $condicao ";
+            $sql = "SELECT $colunas FROM $tabela ";
 
-            if($ordenar != null){
-                $sql .= "ORDER BY $ordenar ";
+            if($join){
+                foreach($join as $key => $info){
+                    $sql .= " JOIN $info['nm_tab1'] ON $info['nm_tab1'].$info['col_tab1'] = $info['nm_tab2'].$info['col_tab2'] ";
+                }
+            }
+
+            $sql .= "WHERE $condicao"; 
+
+            if($ordenar){
+                $sql .= " ORDER BY $ordenar ";
             }
             
-            if($alcance != null){
-                $sql .= "LIMIT $alcance";
+            if($alcance){
+                $sql .= " LIMIT $alcance ";
             }
 
             $this->DB = $this->connectDB()->prepare($sql);
@@ -41,8 +49,8 @@
                     $this->res[] = $fetch;
                 }
             }
-
-            return $this->res;
+            return $sql;
+            // return $this->res;
         }
         
         protected function Update($tabela, $atualizacao, $condicao = 0){

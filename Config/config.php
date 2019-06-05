@@ -46,9 +46,9 @@
     /**
      * DADOS DE ENVIO DE MAIL
      **/
-        define('MAIL_ADDRESS','meuemail@exemplo.com');
-        define('MAIL_OWNER','administrador da silva');
-        define('MAIL_PW','senha do email');
+        define('MAIL_ADDRESS','no-reply@etec.profrodolfo.com.br');
+        define('MAIL_OWNER','Etec Itanhaém');
+        define('MAIL_PW','*L!-UxWA,fZa');
         define('MAIL_PORT','25'); 
         define('MAIL_TYPE','tls'); // ssl ou tls
         
