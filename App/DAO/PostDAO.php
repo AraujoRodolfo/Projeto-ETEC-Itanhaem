@@ -24,8 +24,8 @@
 			$ordenar	= "dt_post DESC";
 			$alcance 	= $qtd;
 
-			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance, $join);
-			
+			$res = $this->Select( $tabela, $colunas, $join, $condicao, $ordenar, $alcance);
+
 			return $res;
 
 			for($i = 0; $i < count($res); $i++ ){
