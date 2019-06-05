@@ -9,7 +9,7 @@
 
 		public function selectPosts(int $qtd){
 			$tabela 	= "post";
-			//dados da tabe de posts
+			//dados da tabela de posts
 			$colunas 	= "titulo, descricao, dt_post, programado,";
 			//dados da tabela de usuarios
 			$colunas	.= " nome, foto ";
@@ -33,8 +33,6 @@
 				$obj[$i]->setDescricao($this->decrypt($res[$i]['descricao'], CRYPT_KEY) );
 				$obj[$i]->setDtPost($res[$i]['dt_post']);
 				$obj[$i]->setProgramado($res[$i]['programado']);
-
-				echo '<br>'.$this->decrypt($res[$i]['nome'], CRYPT_KEY);
 
 				$user = new ModelUsuario();
 				$user->setNome($this->decrypt($res[$i]['nome'], CRYPT_KEY));
