@@ -53,6 +53,8 @@
                 }
             }
 
+            echo $sql;
+
             return $this->res;
         }
         
