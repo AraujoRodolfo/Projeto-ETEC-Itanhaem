@@ -26,11 +26,12 @@
 
             $sql = "SELECT $colunas FROM $tabela ";
 
-            // if($join){
-            //     foreach($join as $key => $info){
-            //         $sql .= " JOIN $key['nm_tab1'] ON $key['nm_tab1'].$key['col_tab1'] = $key['nm_tab2'].$key['col_tab2'] ";
-            //     }
-            // }
+            if($join){
+                foreach($join as $key => $info){
+                    $sql .= " JOIN ".$key['nm_tab1'].
+                            " ON ".$key['nm_tab1'].".".$key['col_tab1']." = ".$key['nm_tab2'].".".$key['col_tab2'];
+                }
+            }
 
             $sql .= "WHERE $condicao"; 
 

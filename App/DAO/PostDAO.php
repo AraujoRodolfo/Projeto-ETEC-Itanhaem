@@ -13,7 +13,7 @@
 			//dados da tabela de usuarios
 			$colunas	.= " nome, foto ";
 
-			$join 		= [0 =>	[
+			$join = [0 =>	[
 				'nm_tab1' 	=> 'usuario',
 				'nm_tab2'	=>	'post',
 				'col_tab1' 	=> 'id',
