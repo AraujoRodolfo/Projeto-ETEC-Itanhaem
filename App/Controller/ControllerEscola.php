@@ -4,6 +4,8 @@
     use App\Controller\Controller;
     
     class ControllerEscola extends Controller{
+
+        private $dirbase = 'Escola';
         
         use \Src\Traits\TraitUrlParser;
         
