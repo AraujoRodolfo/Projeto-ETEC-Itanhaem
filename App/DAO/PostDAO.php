@@ -34,7 +34,7 @@
 				$obj[$i]->setDtPost($res[$i]['dt_post']);
 				$obj[$i]->setProgramado($res[$i]['programado']);
 
-				$user = new ModelUser();
+				$user = new ModelUsuario();
 				$user->setNome($this->decrypt($res['nome']));
 				$user->setFoto($this->decrypt($res['foto']));
 
