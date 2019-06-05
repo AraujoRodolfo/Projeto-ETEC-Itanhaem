@@ -17,7 +17,7 @@
 				'nm_tab1' 	=> 'usuario',
 				'nm_tab2'	=>	'post',
 				'col_tab1' 	=> 'id',
-				'col_tab2' 	=> 'id'
+				'col_tab2' 	=> 'id']
 			];
 
 			$condicao	= 'status = "ativo"';
