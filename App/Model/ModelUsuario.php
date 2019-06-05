@@ -9,13 +9,15 @@
 		private $email;
 		private $senha;
 		private $tipo;
+		private $foto;
 
 		//GETTERS
-		public function getId(){ return $this->id; }
-		public function getNome(){ return $this->nome; }
-		public function getEmail(){ return $this->email; }
-		public function getSenha(){ return $this->senha; }
-		public function getTipo(){ return $this->tipo; }
+		public function getId()		{ 	return $this->id; 		}
+		public function getNome()	{ 	return $this->nome; 	}
+		public function getEmail()	{ 	return $this->email;	}
+		public function getSenha()	{ 	return $this->senha; 	}
+		public function getTipo()	{ 	return $this->tipo; 	}
+		public function getFoto()	{ 	return $this->foto; 	}
 
 		//SETTERS
 		public function setId(int $id){
@@ -44,5 +46,9 @@
 
 		public function setTipo($tipo){
 			$this->tipo = $tipo;
+		}
+
+		public function setFoto($foto){
+			$this->foto = $foto;
 		}
 	}

@@ -36,6 +36,9 @@
 
 				$user = new ModelUser();
 				$user->setNome($this->decrypt($res['nome']));
+				$user->setFoto($this->decrypt($res['foto']));
+
+				$obj[$i]->setUser($user);
 			}
 			
 			return $obj;
