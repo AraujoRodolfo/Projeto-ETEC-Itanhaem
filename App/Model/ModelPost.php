@@ -1,12 +1,13 @@
 <?php
 	namespace App\Model;
 	use App\Model\Model;
+	use App\Model\ModelUsuario;
 
 	class ModelPost extends Model {
 
 		private $id;
-		//id do usuario que criou o post
-		private $idUser;
+		//id um objeto com os dados do usuario que criou este post
+		private $user;
 		//caso esteja atualizando um post que ja foi criado
 		private $idPost;
 		private $titulo;
@@ -23,7 +24,7 @@
 
 		//Getters
 		public function getId(){ return $this->id; }
-		public function getIdUser(){ return $this->idUser; }
+		public function getUser(){ return $this->user; }
 		public function getIdPost(){ return $this->idPost; }
 		public function getTitulo(){ return $this->titulo; }
 		public function getDescricao(){ return $this->descricao; }
@@ -34,7 +35,7 @@
 		
 		//Setters
 		public function setId(int $id ){ $this->id = $id; }
-		public function setIdUser(int $idUser ){ $this->idUser = $idUser; }
+		public function setUser( ModelUsuario $user ){ $this->user = $user; }
 		public function setIdPost(int $idPost){ $this->idPost = $idPost; }
 		public function setTitulo($titulo){ $this->titulo = $titulo; }
 		public function setDescricao($descricao){ $this->descricao = $descricao; }

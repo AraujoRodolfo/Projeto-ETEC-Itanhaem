@@ -45,8 +45,6 @@
                 $sql .= " LIMIT $alcance ";
             }
 
-            return $sql;
-
             $this->DB = $this->connectDB()->prepare($sql);
             $this->DB->execute();
             if($this->DB->rowCount() > 0){
@@ -55,7 +53,7 @@
                 }
             }
 
-            // return $this->res;
+            return $this->res;
         }
         
         protected function Update($tabela, $atualizacao, $condicao = 0){
