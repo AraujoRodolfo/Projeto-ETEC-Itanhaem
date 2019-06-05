@@ -22,7 +22,7 @@
             return $this->res;  
         }
         
-        protected function Select($tabela, $colunas, $condicao, $ordenar = false, $alcance = false, $join = false){
+        protected function Select($tabela, $colunas, $join = false, $condicao = false, $ordenar = false, $alcance = false){
 
             $sql = "SELECT $colunas FROM $tabela ";
 
@@ -33,7 +33,9 @@
                 }
             }
 
-            $sql .= "WHERE $condicao"; 
+            if($condicao){
+                $sql .= " WHERE $condicao ";
+            }
 
             if($ordenar){
                 $sql .= " ORDER BY $ordenar ";

@@ -25,8 +25,7 @@
 			$alcance 	= $qtd;
 
 			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance, $join);
-
-			echo $res;
+			
 			return $res;
 
 			for($i = 0; $i < count($res); $i++ ){
