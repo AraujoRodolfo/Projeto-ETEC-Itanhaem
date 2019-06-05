@@ -26,6 +26,9 @@
 
 			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance, $join);
 
+			echo $res;
+			return $res;
+
 			for($i = 0; $i < count($res); $i++ ){
 				$obj[$i] = new ModelPost();
 				$obj[$i]->setTitulo( $this->decrypt($res[$i]['titulo'],CRYPT_KEY) );
