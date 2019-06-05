@@ -1,6 +1,6 @@
 <h1>Index</h1>
-<pre>
-    <?php
-        print_r($this->list['ultimas noticias']);
-    ?>
-</pre>
+	<?php
+		foreach($this->list['ultimas noticias'] as $obj => $value){
+			echo "<h1>".$obj->getTitulo()."</h1>";
+		}
+	?>
