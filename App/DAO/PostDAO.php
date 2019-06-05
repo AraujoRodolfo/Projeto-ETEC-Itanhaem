@@ -24,8 +24,8 @@
 			$ordenar	= "dt_post DESC";
 			$alcance 	= $qtd;
 
-			echo $json[0]['nm_tab1'];
-			return $json;
+			echo $join[0]['nm_tab1'];
+			return $join;
 
 			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance, $join);
 
