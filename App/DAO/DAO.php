@@ -28,8 +28,8 @@
 
             if($join){
                 foreach($join as $key => $info){
-                    $sql .= " JOIN ".$key['nm_tab1'].
-                            " ON ".$key['nm_tab1'].".".$key['col_tab1']." = ".$key['nm_tab2'].".".$key['col_tab2'];
+                    $sql .= " JOIN ".$info['nm_tab1'].
+                            " ON ".$info['nm_tab1'].".".$info['col_tab1']." = ".$info['nm_tab2'].".".$info['col_tab2'];
                 }
             }
 
