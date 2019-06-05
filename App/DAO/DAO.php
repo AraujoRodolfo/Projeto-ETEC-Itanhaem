@@ -54,6 +54,7 @@
             }
 
             echo $sql;
+            print_r($this->res);
 
             return $this->res;
         }
