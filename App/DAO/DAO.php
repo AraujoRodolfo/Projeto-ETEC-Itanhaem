@@ -8,6 +8,8 @@
         protected $DB;
         private $res = false;
         
+        use \Src\Traits\TraitCrypt;
+        
         protected function Insert($tabela, $colunas, $valores){
             $sql = "INSERT INTO $tabela ($colunas) VALUES ($valores)";
 

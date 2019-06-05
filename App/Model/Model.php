@@ -3,5 +3,4 @@
     //classe generica para as outras herdarem
     class Model {
 
-    	public $excessoes;
     }

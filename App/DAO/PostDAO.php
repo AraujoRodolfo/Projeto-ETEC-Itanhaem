@@ -17,8 +17,8 @@
 
 			for($i = 0; $i < count($res); $i++ ){
 				$obj[$i] = new ModelPost();
-				$obj[$i]->setTitulo( $res[$i]['titulo'] );
-				$obj[$i]->setDescricao($res[$i]['descricao']);
+				$obj[$i]->setTitulo( $this->decrypt($res[$i]['titulo'],CRYPT_KEY) );
+				$obj[$i]->setDescricao($this->decrypt($res[$i]['descricao'],CRYPT_KEY) );
 				$obj[$i]->setDtPost($res[$i]['dt_post']);
 				$obj[$i]->setProgramado($res[$i]['programado']);
 				$obj[$i]->decryptAll();

@@ -21,10 +21,6 @@
 		//recebe o caminho de anexos (imagens ou documentos)
 		private $anexo = [];
 
-		public function __construct(){
-			$this->excessoes = ['id','idUser','anexo','dtPost','programado','status','excessoes'];
-		}
-
 		//Getters
 		public function getId(){ return $this->id; }
 		public function getIdUser(){ return $this->idUser; }
@@ -47,5 +43,4 @@
 		public function setProgramado($programado){ $this->programado = $programado; }
 		public function setAnexo($anexo){ $this->anexo = $anexo; }
 
-		use \Src\Traits\TraitCrypt;
 	}

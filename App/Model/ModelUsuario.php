@@ -10,10 +10,6 @@
 		private $senha;
 		private $tipo;
 
-		public function __construct(){
-			$this->excessoes = ['id','tipo','excessoes'];
-		}
-
 		//GETTERS
 		public function getId(){ return $this->id; }
 		public function getNome(){ return $this->nome; }
