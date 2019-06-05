@@ -27,9 +27,9 @@
 		}
 
 		public function setNome($nome){
-			if(preg_match('/^[a-zA-Z]{2,}$/', $nome)){
+			// if(preg_match('/^[a-zA-Z]{2,}$/', $nome)){
 				$this->nome = $nome;
-			}
+			// }
 		}
 
 		public function setEmail($email){
