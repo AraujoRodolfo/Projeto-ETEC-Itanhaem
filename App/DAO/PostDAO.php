@@ -38,8 +38,6 @@
 				$user->setNome($this->decrypt($res[$i]['nome'], CRYPT_KEY));
 				$user->setFoto($this->decrypt($res[$i]['foto'], CRYPT_KEY));
 
-				print_r($user);
-
 				$obj[$i]->setUser($user);
 			}
 			
