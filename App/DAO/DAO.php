@@ -42,6 +42,8 @@
                 $sql .= " LIMIT $alcance ";
             }
 
+            return $sql;
+
             $this->DB = $this->connectDB()->prepare($sql);
             $this->DB->execute();
             if($this->DB->rowCount() > 0){
@@ -49,7 +51,7 @@
                     $this->res[] = $fetch;
                 }
             }
-            return $sql;
+
             // return $this->res;
         }
         

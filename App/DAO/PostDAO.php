@@ -24,7 +24,7 @@
 			$ordenar	= "dt_post DESC";
 			$alcance 	= $qtd;
 
-			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance);
+			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance, $join);
 
 			return $res;
 
