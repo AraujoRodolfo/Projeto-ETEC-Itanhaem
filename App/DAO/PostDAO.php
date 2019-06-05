@@ -35,8 +35,8 @@
 				$obj[$i]->setProgramado($res[$i]['programado']);
 
 				$user = new ModelUsuario();
-				$user->setNome($this->decrypt($res['nome'], CRYPT_KEY));
-				$user->setFoto($this->decrypt($res['foto'], CRYPT_KEY));
+				$user->setNome($this->decrypt($res[$i]['nome'], CRYPT_KEY));
+				$user->setFoto($this->decrypt($res[$i]['foto'], CRYPT_KEY));
 
 				$obj[$i]->setUser($user);
 			}
