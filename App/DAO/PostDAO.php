@@ -24,9 +24,10 @@
 			$ordenar	= "dt_post DESC";
 			$alcance 	= $qtd;
 
-			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance, $join);
+			echo $json[0]['nm_tab1'];
+			return $json;
 
-			return $res;
+			$res = $this->Select( $tabela, $colunas, $condicao, $ordenar, $alcance, $join);
 
 			for($i = 0; $i < count($res); $i++ ){
 				$obj[$i] = new ModelPost();
