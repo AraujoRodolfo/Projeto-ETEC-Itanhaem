@@ -29,14 +29,14 @@
 
 			for($i = 0; $i < count($res); $i++ ){
 				$obj[$i] = new ModelPost();
-				$obj[$i]->setTitulo( $this->decrypt($res[$i]['titulo'],CRYPT_KEY) );
-				$obj[$i]->setDescricao($this->decrypt($res[$i]['descricao'],CRYPT_KEY) );
+				$obj[$i]->setTitulo( $this->decrypt($res[$i]['titulo'], CRYPT_KEY) );
+				$obj[$i]->setDescricao($this->decrypt($res[$i]['descricao'], CRYPT_KEY) );
 				$obj[$i]->setDtPost($res[$i]['dt_post']);
 				$obj[$i]->setProgramado($res[$i]['programado']);
 
 				$user = new ModelUsuario();
-				$user->setNome($this->decrypt($res['nome']));
-				$user->setFoto($this->decrypt($res['foto']));
+				$user->setNome($this->decrypt($res['nome'], CRYPT_KEY));
+				$user->setFoto($this->decrypt($res['foto'], CRYPT_KEY));
 
 				$obj[$i]->setUser($user);
 			}
