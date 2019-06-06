@@ -23,6 +23,7 @@
         public function index(){
             //MODEL ===========================================================
             $postDAO = new PostDAO();
+            
             //VIEW ============================================================
             $render = new ClassRender();
             $render->setTitle('Ensino Médio e Técnico gratuito em Itanhaém');
