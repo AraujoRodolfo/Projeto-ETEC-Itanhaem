@@ -39,7 +39,7 @@
 			$this->mail->isHTML(true);
             $this->mail->Subject = 'Redefinir Senha';
             $this->mail->Body    =  file_get_contents(DIR_REQ.'Src/Includes/Email/redefinirSenha.php');
-            $this->mail->Body = str_replace("$url", DIR_PAGE.'redefinir-senha/'.$this->enderecos[0]->getRedefinePwUrl() , $this->mail->Body);
+            $this->mail->Body = str_replace('$url', DIR_PAGE.'redefinir-senha/'.$this->enderecos[0]->getRedefinePwUrl() , $this->mail->Body);
     	}
 
     	public function Conteudo_novidade(){
