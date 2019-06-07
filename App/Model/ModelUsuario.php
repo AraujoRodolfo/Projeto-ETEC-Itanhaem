@@ -11,6 +11,8 @@
 		private $tipo;
 		private $foto;
 
+		private $redefinePwUrl;
+
 		//GETTERS
 		public function getId()		{ 	return $this->id; 		}
 		public function getNome()	{ 	return $this->nome; 	}
@@ -18,6 +20,7 @@
 		public function getSenha()	{ 	return $this->senha; 	}
 		public function getTipo()	{ 	return $this->tipo; 	}
 		public function getFoto()	{ 	return $this->foto; 	}
+		public function getRedefinePwUrl(){ return $this->redefinePwUrl; }
 
 		//SETTERS
 		public function setId(int $id){
@@ -50,5 +53,9 @@
 
 		public function setFoto($foto){
 			$this->foto = $foto;
+		}
+
+		public function setRedefinePwUrl($url){
+			$this->redefinePwUrl = $url;
 		}
 	}

@@ -46,10 +46,11 @@
     /**
      * DADOS DE ENVIO DE MAIL
      **/
+        define("MAIL_HOST",'etec.profrodolfo.com.br');
         define('MAIL_ADDRESS','no-reply@etec.profrodolfo.com.br');
         define('MAIL_OWNER','Etec Itanhaém');
-        define('MAIL_PW','*L!-UxWA,fZa');
-        define('MAIL_PORT','25'); 
+        define('MAIL_PW','5Tdiud2ZH,+w');
+        define('MAIL_PORT','587'); 
         define('MAIL_TYPE','tls'); // ssl ou tls
         
     /**

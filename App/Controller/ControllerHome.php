@@ -5,9 +5,11 @@
     use App\Controller\Controller;
     use App\DAO\PostDAO;
     use App\Model\ModelPost;
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-    
+
+    use App\Model\ModelUsuario;
+
+    use Src\Classes\ClassEmail;
+        
     class ControllerHome extends Controller{
 
         private $dirbase = 'Home';
@@ -56,7 +58,16 @@
 
         //metodo para testar disparos de email via PHPMailer
         public function enviarEmail(){
+            $usuario = new ModelUsuario();
+            $usuario->setNome("Jhonatan da Costa Santos");
+            $usuario->setEmail("jdc_santos@outlook.com");
+            $usuario->setRedefinePwUrl('937498374847');
 
+            $arr[] = $usuario;
+
+            $email = new ClassEmail($arr);
+            $email->Conteudo_redefinirSenha();
+            $email->enviar();
         }
         
     }
