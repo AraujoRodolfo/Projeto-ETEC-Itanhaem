@@ -15,6 +15,7 @@
     		$this->mail = new PHPMailer(true);
     		try {
                 //Server settings
+                $this->mail->CharSet = 'UTF-8';
                 $this->mail->SMTPDebug = 1;
                 $this->mail->isSMTP();
                 $this->mail->Host       = MAIL_HOST;
