@@ -25,7 +25,7 @@
 			$ordenar	= "dt_post DESC";
 			$alcance 	= $qtd;
 
-			$res = $this->Select( $tabela, $colunas, $join, $condicao, $ordenar, $alcance);
+			$res = $this->Select('post', $colunas, $join, $condicao, $ordenar, $alcance);
 
 			for($i = 0; $i < count($res); $i++ ){
 				$obj[$i] = new ModelPost();
