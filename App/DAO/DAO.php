@@ -12,7 +12,7 @@
         protected function insert($tabela, $colunas, $valores){
             //monta a query
             $sql = "INSERT INTO $tabela ({$colunas}) VALUES ({$valores})";
-            echo $sql;
+
             //tenta executar o trecho de codigo
             try{
 
@@ -25,7 +25,8 @@
             } 
         }
         
-        protected function Select($tabela, $colunas, $join = false, $condicao = false, $ordenar = false, $alcance = false){
+        protected function Select($tabela, $colunas, $join = false,
+            $condicao = false, $ordenar = false, $alcance = false){
 
             $res = false;
             //começa montando a query apenas com as colunas e o nome da tabela
