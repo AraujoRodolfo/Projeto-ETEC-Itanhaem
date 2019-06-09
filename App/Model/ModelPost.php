@@ -6,8 +6,8 @@
 	class ModelPost extends Model {
 
 		private $id;
-		//id um objeto com os dados do usuario que criou este post
-		private $user;
+		//objeto com os dados do autor do post
+		private $autor;
 		//caso esteja atualizando um post que ja foi criado
 		private $idPost;
 		private $titulo;
@@ -24,7 +24,7 @@
 
 		//Getters
 		public function getId(){ return $this->id; }
-		public function getUser(){ return $this->user; }
+		public function getAutor(){ return $this->autor; }
 		public function getIdPost(){ return $this->idPost; }
 		public function getTitulo(){ return $this->titulo; }
 		public function getDescricao(){ return $this->descricao; }
@@ -35,7 +35,7 @@
 		
 		//Setters
 		public function setId(int $id ){ $this->id = $id; }
-		public function setUser( ModelUsuario $user ){ $this->user = $user; }
+		public function setAutor( ModelUsuario $autor ){ $this->autor = $autor; }
 		public function setIdPost(int $idPost){ $this->idPost = $idPost; }
 		public function setTitulo($titulo){ $this->titulo = $titulo; }
 		public function setDescricao($descricao){ $this->descricao = $descricao; }

@@ -25,6 +25,18 @@
         public function index(){
             //MODEL ===========================================================
             $postDAO = new PostDAO();
+
+            $user = new ModelUsuario();
+            $user->setId(1);
+
+            $post = new ModelPost();
+            $post->setAutor($user);
+            $post->setTitulo('titulo alguma coisa');
+            $post->setDescricao("Aqui tem uma descricao do post");
+            $post->setDtPost(date("Y-m-d h:i:s"));
+            $post->setStatus('ativo');
+
+            $postDAO->newPost($post);
             
             //VIEW ============================================================
             $render = new ClassRender();

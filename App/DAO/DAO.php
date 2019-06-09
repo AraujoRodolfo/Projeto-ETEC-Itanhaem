@@ -5,24 +5,29 @@
     //Essa classe contem metodos básicos usados por todas as classes DAO.
     class DAO extends DB{
         
-        protected $DB;
-        private $res = false;
+        private $DB;
         
         use \Src\Traits\TraitCrypt;
         
-        protected function Insert($tabela, $colunas, $valores){
-            $sql = "INSERT INTO $tabela ($colunas) VALUES ($valores)";
+        protected function insert($tabela, $colunas, $valores){
+            //monta a query
+            $sql = "INSERT INTO $tabela ({$colunas}) VALUES ({$valores})";
+            echo $sql;
+            //tenta executar o trecho de codigo
+            try{
 
-            $this->DB = $this->connectDB()->prepare($sql);
-
-            if($this->DB->execute()){
-                $this->res = true;
-            }
-
-            return $this->res;  
+                $this->DB = $this->connectDB()->prepare($sql);
+                $this->DB->execute();
+            //se nao conseguir executar o codigo acima, captura o erro
+            }catch(\PDOException $e){
+                //mostra o erro
+                print_r($e);
+            } 
         }
         
         protected function Select($tabela, $colunas, $join = false, $condicao = false, $ordenar = false, $alcance = false){
+
+            $res = false;
             //começa montando a query apenas com as colunas e o nome da tabela
             $sql = "SELECT $colunas FROM $tabela ";
             //se tiver tabelas para "juntar"...
@@ -52,11 +57,11 @@
                 //enquanto houver "linha", adicione o conteudo dela no array $res;
                 while($fetch = $this->DB->fetch(\PDO::FETCH_ASSOC)){
                     //cada "linha" que retornar da query, é inserida em um novo indice do array.
-                    $this->res[] = $fetch;
+                    $res[] = $fetch;
                 }
             }
             //retorna o array com as informações do DB.
-            return $this->res;
+            return $res;
         }
         
         protected function Update($tabela, $atualizacao, $condicao = 0){
@@ -65,10 +70,10 @@
             $this->DB = $this->connectDB()->prepare($sql);
 
             if($this->DB->execute()){
-                $this->res = true;
+                $res = true;
             }
 
-            return $this->res;  
+            return $res;  
         }
         
         protected function Delete($tabela, $condicao = 0){
@@ -78,10 +83,10 @@
             $this->DB = $this->connectDB()->prepare($sql);
 
             if($this->DB->execute()){
-                $this->res = true;
+                $res = true;
             }
 
-            return $this->res;
+            return $res;
         }
         
     }
