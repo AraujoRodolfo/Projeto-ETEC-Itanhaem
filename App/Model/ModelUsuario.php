@@ -50,34 +50,37 @@
 				$this->id = $id;	
 			}
 		}
-
+		public function setTurma($turma){ $this->turma = $turma; }
 		public function setNome($nome){
 			// if(preg_match('/^[a-zA-Z]{2,}$/', $nome)){
 				$this->nome = $nome;
 			// }
 		}
-
 		public function setEmail($email){
     		if(preg_match('/^[a-z0-9_\.\-]+@[a-z0-9_\.\-]*[a-z0-9_\.\-]+\.[a-z]{2,4}$/',$email)){
 				$this->email = $email;
 			}
 		}
-
 		public function setSenha($senha){
 			if(strlen($senha) >= 6){
 				$this->senha = $senha;
 			}
 		}
-
-		public function setTipo($tipo){
-			$this->tipo = $tipo;
-		}
-
+		public function setDtNascimento($dtNascimento){ $this->dtNascimento = $dtNascimento; }
 		public function setFoto($foto){
-			$this->foto = $foto;
+			$tipos = ['image/jpg','image/pnj','image/jpeg','image/PNG'];
+			if(isset($foto['type'])){
+				if(in_array($foto['type'],$tipos)){
+					$this->foto = $foto;
+				}
+			}	
 		}
-
-		public function setRedefinePwUrl($url){
-			$this->redefinePwUrl = $url;
-		}
+		public function setCriacaoConta(){ $this->dtCriacaoConta = date('Y-m-d h:i:s'); }
+		public function setDtAtualizacaoConta(){ $this->dtCriacaoConta = date('Y-m-d h:i:s'); }
+		public function setHrAtendimento($hrAtendimento){ $this->hrAtendimento = $hrAtendimento; }
+		public function setSocial($social){ $this->social = $social; }
+		public function setStatus($status){ $this->status = $status; }
+		public function setIp(){ $this->ip = $_SERVER['REMOTE_ADDR']; }
+		public function setRedefinePwUrl($url){	$this->redefinePwUrl = $url; }
+		public function setTipo($tipo){ $this->tipo = $tipo; }
 	}
