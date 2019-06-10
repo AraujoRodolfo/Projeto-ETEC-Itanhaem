@@ -21,10 +21,6 @@
 		private $ultimoAcesso;
 		//tabela grupo
 		private $tipo;
-
-
-		private $redefinePwUrl;
-
 		//GETTERS
 		public function getId() { return $this->id; }
 		public function getTurma() { return $this->turma; }
