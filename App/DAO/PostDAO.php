@@ -82,6 +82,50 @@
 			$valores 	.= ",'". $post->getStatus() ."'";
 			$valores 	.= ",". $programado ."";
 
-			$id_post = $this->Insert($this->tabela,$cols,$valores);
+			//insere os dados e recebe eles encriptados junto cmo a primary key e tudo mais.
+			$data_post = $this->Insert($this->tabela,$cols,$valores);
+
+			$this->newAnexo($data_post['id'], $post->getAnexo());
+		}
+
+		//metodo para adicionar os anexos do post
+		private function newAnexo($id_post, $anexos){
+			//monta o caminho para o doretório
+			$dir  = DIR_UPLOAD_POST_ANEXOS.$id_post;
+			echo $dir;
+			//nome da tabela onde os dados do anexo vão ficar
+			$tabela = "anexo";
+			//conta quantos arquivos foram enviados
+			$qtd_files = 0;
+			foreach($anexos[0]['name'] as $key => $value){
+				if($value != null){
+					$qtd_files++;
+				}
+			}
+
+			//para cada anexo que foi inserido no post
+			for($i = 0;$i < $qtd_files; $i++ ){
+				//se nao existir o diretorio
+				if(!is_dir($dir)){
+					//crie o diretorio
+					mkdir($dir, 0777);
+				}
+				echo "<pre>";
+				print_r($anexos);
+				//move a imagem para o toreório
+				if(move_uploaded_file($anexos[0]['tmp_name'][$i],$dir.'/'.$anexos[0]['name'][$i])){
+					//campos da tabela
+					$colunas  = 'id_anexo';
+					$colunas .= ', post';
+					$colunas .= ', nome';
+					//valores da tabela
+					$valores  = "null";
+					$valores .= ", ".$id_post;
+					$valores .= ",'".$anexos[0]['name'][$i]."'";
+
+					//insere o nome da imagem no DB
+					$this->Insert($tabela,$colunas,$valores);
+				}
+			}
 		}
 	}

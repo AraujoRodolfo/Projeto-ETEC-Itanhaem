@@ -9,20 +9,39 @@
         
         use \Src\Traits\TraitCrypt;
         
+        //metodo para insert, todo insert do sistema passa por este metodo
         protected function insert($tabela, $colunas, $valores){
             //monta a query
             $sql = "INSERT INTO $tabela ({$colunas}) VALUES ({$valores})";
-
             //tenta executar o trecho de codigo
             try{
 
                 $this->DB = $this->connectDB()->prepare($sql);
                 $this->DB->execute();
+
+                //transforna a variavel $colunas em array, separando onde tem virgula
+                $cols = explode(",",$colunas);
+
+                /* chama o metodo privado para puxar o ultimo registro da tabelas
+                 * a primeira coluna é sempre o ID da linha
+                 * por isso pegamos o indice 0 do array
+                 * retorna o array com os campos (encriptados)
+                 */
+                return $this->returnLastInsert( $tabela, $cols[0]);
+
             //se nao conseguir executar o codigo acima, captura o erro
             }catch(\PDOException $e){
                 //mostra o erro
                 print_r($e);
             } 
+        }
+        //metodo para retornar o ultimo registro inserido.
+        private function returnLastInsert($tabela, $col){
+            $sql = "SELECT * FROM $tabela ORDER BY $col DESC LIMIT 1";
+            $this->DB = $this->connectDB()->prepare($sql);
+            $this->DB->execute();
+            $fetch = $this->DB->fetch(\PDO::FETCH_ASSOC);
+            return $fetch;
         }
         
         protected function Select($tabela, $colunas, $join = false,

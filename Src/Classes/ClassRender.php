@@ -50,15 +50,6 @@
             if(file_exists(DIR_REQ."App/View/".$this->getDirBase()."/header.php")){
                 //se ele existir, da um include
                 include_once DIR_REQ."App/View/".$this->getDirBase()."/header.php";
-                /**
-                 * Opcional: deixar um header para cada usuário em vez de um header por tela
-                 * isso pode ser util se tiver mais de 1 menu exemplo:
-                 * menu de visitante(headerBase), menu de aluno, menu de professor, etc...
-                 */
-                //include_once DIR_REQ."App/View/".$this->getDirBase()."/header.php";
-            }else{
-                //se nao existir, inclui o header base
-                include_once DIR_REQ."App/View/headerBase.php";
             }
             
         }
@@ -72,8 +63,6 @@
         public function addfooter(){
            if(file_exists(DIR_REQ."App/View/".$this->getDirBase()."/".$this->getDir()."/footer.php")){
                 include_once DIR_REQ."App/View/".$this->getDirBase()."/".$this->getDir()."/footer.php";
-           }else{
-                include_once DIR_REQ."App/View/footerBase.php";
            }
         }
     }

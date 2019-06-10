@@ -42,6 +42,6 @@
 		public function setDtPost($dt){ $this->dtPost = $dt; }
 		public function setStatus($status){ $this->status = $status; }
 		public function setProgramado($programado){ $this->programado = $programado; }
-		public function setAnexo($anexo){ $this->anexo = $anexo; }
+		public function setAnexo($anexo){ $this->anexo[] = $anexo; }
 
 	}

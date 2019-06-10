@@ -67,5 +67,53 @@
             $email->Conteudo_redefinirSenha();
             $email->enviar();
         }
-        
+
+        //metodo de teste de inserção de posts + anexos
+        public function newPost(){
+
+            if(isset($_POST['newPost']) && $_POST['newPost'] === $_SESSION['form_key']){
+
+                $autor = new ModelUsuario();
+                $autor->setId(1);
+
+                $post = new ModelPost();
+                $post->setAutor($autor);
+                $post->setTitulo($_POST['titulo']);
+                $post->setDescricao($_POST['descricao']);
+                $post->setDtPost(date('Y-m-d h:i:s'));
+                $post->setStatus($_POST['status']);
+
+                //formatar horario programado
+                $dthr = null;
+                if(isset($_POST['marcada'])){
+                    $dthr  = $_POST['dataMarcada'];
+                    $dthr .= ' '. $_POST['hora'];
+                    $dthr .= ':'. $_POST['min'];
+                    $dthr .= ':'. $_POST['seg'];
+                }
+
+                $post->setProgramado($dthr);
+
+                if(isset($_FILES)){
+                    foreach($_FILES as $key => $anexo){
+                        $post->setAnexo($_FILES['anexo']);
+                    }    
+                }
+                
+
+                $postDAO = new PostDAO();
+                $postDAO->newPost($post);
+
+            }else{
+                $_SESSION['form_key'] = md5('Y-M-d h:s:i');
+
+                $render = new ClassRender();
+                $render->setTitle('Ensino Médio e Técnico gratuito em Itanhaém');
+                $render->setDescription("Etec Itanhaém");
+                $render->setKeywords("Etec, itanhaém, gambiarra");
+                $render->setDirBase($this->dirbase);
+                $render->setDir('new_post');
+                $render->renderizar();
+            }
+        }
     }

@@ -1,11 +1,13 @@
 <?php
+    //define o fuso-horario
+    date_default_timezone_set('America/Sao_Paulo');
     // mostrar erros
     ini_set('display_errors',1);
     ini_set('display_startup_erros',1);
     error_reporting(E_ALL);
     
     //caso nao esteja no root, coloacar o nome da subpasta exemplo: "sub/"
-        $subpasta = "";
+        $subpasta = "Projeto-ETEC-Itanhaem/";
         
     /**
      * ROTAS BASE
@@ -25,6 +27,10 @@
         define('DIR_JS',        DIR_PAGE .'public/js/');
         define('DIR_TEMPLATE',  DIR_PAGE .'public/template/');
         define('DIR_IMG',       DIR_PAGE .'public/img/');
+        define('DIR_ANEXOS',    DIR_PAGE .'public/img/posts/');
+        //diretorio para upload de anexos e etc
+        define('DIR_UPLOAD',    DIR_REQ  .'public/');
+        define('DIR_UPLOAD_POST_ANEXOS', DIR_UPLOAD . 'img/posts/');
     
     /**
      *  DIRETORIOS DA APLICAÇÃO
