@@ -7,7 +7,7 @@
     error_reporting(E_ALL);
     
     //caso nao esteja no root, coloacar o nome da subpasta exemplo: "sub/"
-        $subpasta = "Projeto-ETEC-Itanhaem/";
+        $subpasta = "";
         
     /**
      * ROTAS BASE
