@@ -21,7 +21,19 @@
 		private $ultimoAcesso;
 		//tabela grupo
 		private $tipo;
-		//GETTERS
+
+		/**
+		 * já que a tabela contato tem alguns dos mesmos campos que a usuario
+		 * e o contato é um tipo de usuario, irei colocar os atributos do contato aqui.
+		 */
+		//dt de envio do formulario de contato
+		private $dt_envio;
+		//mensagem do formulario
+		private $mensagem;
+		//titulo/ assunto do formulario
+		private $assunto;
+
+		//GETTERS ==================================================================
 		public function getId() { return $this->id; }
 		public function getTurma() { return $this->turma; }
 		public function getNome() { return $this->nome; }
@@ -37,10 +49,12 @@
 		public function getStatus(){ return $this->status; }
 		public function getIp(){ return $this->ip; }
 		public function getUltimoAcesso(){ return $this->ultimoAcesso; }
-
 		public function getTipo() { return $this->tipo; }
+		public function getDtEnvio(){ return $this->dt_envio; }
+		public function getMensagem(){ return $this->mensagem; }
+		public function getAssunto(){ return $this->assunto; }
 
-		//SETTERS
+		//SETTERS =================================================================
 		public function setId(int $id){
 			if($id > 0){
 				$this->id = $id;	
@@ -79,4 +93,7 @@
 		public function setIp(){ $this->ip = $_SERVER['REMOTE_ADDR']; }
 		public function setRedefinePwUrl($url){	$this->redefinePwUrl = $url; }
 		public function setTipo($tipo){ $this->tipo = $tipo; }
+		public function setDtEnvio($dt){ $this->dt_envio = $dt; }
+		public function setMensagem($msg){ $this->mensagem = $msg; }
+		public function setAssunto($assunto){ $this->assunto = $assunto; }
 	}
