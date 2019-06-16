@@ -13,7 +13,7 @@
 			//variavel que irá retornar o resultado
 			$ret = false;
 			//colunas da tabela post que deverão ser mostrados
-			$colunas 	= "titulo, descricao, dt_post, programado,";
+			$colunas 	= "nm_post, ds_post, dt_post, ds_tipo ,programado,";
 			//dados da tabela de usuarios
 			$colunas	.= " nome, foto ";
 			//array com as tabelas que deverão se juntar na query (JOIN)
@@ -63,36 +63,50 @@
 			if($post->getProgramado() !== null){ $programado = $post->getProgramado(); }
 
 			//os campos que devem receber os valores
-			$cols 	 = 'id';
-			$cols 	.= ', usuario';
-			$cols 	.= ', id_post';
-			$cols 	.= ', titulo';
-			$cols 	.= ', descricao';
+			$cols 	 = 'id_post';
+			$cols 	.= ', id_update_post';
+			$cols 	.= ', id_usuario';
+			$cols 	.= ', nm_post';
+			$cols 	.= ', ds_post';
 			$cols 	.= ', dt_post';
-			$cols 	.= ', status_post';
+			$cols 	.= ', ic_status';
+			$cols 	.= ', ds_tipo';
 			$cols 	.= ', programado';
 
 			//os valores, devem estar em ordem com os campos da variavel acima
 			$valores 	 = "null";
-			$valores 	.= ",". $post->getAutor()->getId() ."";
 			$valores 	.= ",". $idPost ."";
+			$valores 	.= ",". $post->getAutor()->getId() ."";
 			$valores 	.= ",'". $this->encrypt($post->getTitulo(),CRYPT_KEY)."'";
 			$valores 	.= ",'". $this->encrypt($post->getDescricao(),CRYPT_KEY)."'";
 			$valores 	.= ",'". $post->getDtPost() ."'";
 			$valores 	.= ",'". $post->getStatus() ."'";
+			$valores 	.= ",'". $post->getTipo() ."'";
 			$valores 	.= ",". $programado ."";
 
 			//insere os dados e recebe eles encriptados junto cmo a primary key e tudo mais.
 			$data_post = $this->Insert($this->tabela,$cols,$valores);
+			//se o post for inserido com sucesso, verifica se tem anexos para inserir
+			if($data_post['error'] == ""){
+				$data_anexo = $this->newAnexo($data_post['data']['id_post'], $post->getAnexo());
+				//se os anexos forem inseridos com sucesso, retorna 1
+				if($data_anexo['error'] == ""){
+					return 1;
+				}else{//senao, retorna o erro
+					return $data_anexo['error'];
+				}
 
-			$this->newAnexo($data_post['id'], $post->getAnexo());
+			}else{
+				return $data_post['error'];
+			}
+			
 		}
 
 		//metodo para adicionar os anexos do post
 		private function newAnexo($id_post, $anexos){
 			//monta o caminho para o doretório
-			$dir  = DIR_UPLOAD_POST_ANEXOS.$id_post;
-			echo $dir;
+			$dir  = DIR_UPLOAD_POST_ANEXOS.$id_post.'/';
+			// echo $dir;
 			//nome da tabela onde os dados do anexo vão ficar
 			$tabela = "anexo";
 			//conta quantos arquivos foram enviados
@@ -110,21 +124,25 @@
 					//crie o diretorio
 					mkdir($dir, 0777);
 				}
-				echo "<pre>";
-				print_r($anexos);
+				// echo "<pre>";
+				// print_r($anexos);
 				//move a imagem para o toreório
-				if(move_uploaded_file($anexos[0]['tmp_name'][$i],$dir.'/'.$anexos[0]['name'][$i])){
+				if(move_uploaded_file($anexos[0]['tmp_name'][$i],$dir.$anexos[0]['name'][$i])){
 					//campos da tabela
 					$colunas  = 'id_anexo';
-					$colunas .= ', post';
-					$colunas .= ', nome';
+					$colunas .= ', id_post';
+					$colunas .= ', nm_anexo';
+					$colunas .= ', ds_anexo';
 					//valores da tabela
 					$valores  = "null";
 					$valores .= ", ".$id_post;
 					$valores .= ",'".$anexos[0]['name'][$i]."'";
+					$valores .= ",''";
 
 					//insere o nome da imagem no DB
-					$this->Insert($tabela,$colunas,$valores);
+					$res = $this->Insert($tabela,$colunas,$valores);
+					
+					if($res['error'] != ""){ return $res['error']; }
 				}
 			}
 		}

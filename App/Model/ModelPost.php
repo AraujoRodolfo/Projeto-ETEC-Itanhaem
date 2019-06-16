@@ -14,6 +14,7 @@
 		private $descricao;
 		private $dtPost;
 		private $status;
+		private $tipo;
 		/**
 		 * 	caso esteja programado para aparecer no site a partir de determinado dia ou horario
 		 *	este campo deverá receber a data-hora.
@@ -30,6 +31,7 @@
 		public function getDescricao(){ return $this->descricao; }
 		public function getDtPost(){ return $this->dtPost; }
 		public function getStatus(){ return $this->status; }
+		public function getTipo(){ return $this->tipo; }
 		public function getProgramado(){ return $this->programado; }
 		public function getAnexo(){ return $this->anexo; }
 		
@@ -41,6 +43,7 @@
 		public function setDescricao($descricao){ $this->descricao = $descricao; }
 		public function setDtPost($dt){ $this->dtPost = $dt; }
 		public function setStatus($status){ $this->status = $status; }
+		public function setTipo($tipo){ $this->tipo = $tipo; }
 		public function setProgramado($programado){ $this->programado = $programado; }
 		public function setAnexo($anexo){ $this->anexo[] = $anexo; }
 

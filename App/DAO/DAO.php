@@ -6,6 +6,7 @@
     class DAO extends DB{
         
         private $DB;
+        private $arr_retorno = ["error" =>""];
         
         use \Src\Traits\TraitCrypt;
         
@@ -13,6 +14,7 @@
         protected function insert($tabela, $colunas, $valores){
             //monta a query
             $sql = "INSERT INTO $tabela ({$colunas}) VALUES ({$valores})";
+
             //tenta executar o trecho de codigo
             try{
 
@@ -27,12 +29,15 @@
                  * por isso pegamos o indice 0 do array
                  * retorna o array com os campos (encriptados)
                  */
-                return $this->returnLastInsert( $tabela, $cols[0]);
+                $this->arr_retorno['data'] = $this->returnLastInsert( $tabela, $cols[0]);
+
+                return $this->arr_retorno;
 
             //se nao conseguir executar o codigo acima, captura o erro
             }catch(\PDOException $e){
                 //mostra o erro
-                print_r($e);
+                $this->arr_retorno = ["error" => $e];
+                return $this->arr_retorno;
             } 
         }
         //metodo para retornar o ultimo registro inserido.
@@ -108,5 +113,4 @@
 
             return $res;
         }
-        
     }

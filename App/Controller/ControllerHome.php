@@ -82,6 +82,7 @@
                 $post->setDescricao($_POST['descricao']);
                 $post->setDtPost(date('Y-m-d h:i:s'));
                 $post->setStatus($_POST['status']);
+                $post->setTipo($_POST['tipo']);
 
                 //formatar horario programado
                 $dthr = null;
@@ -102,7 +103,9 @@
                 
 
                 $postDAO = new PostDAO();
-                $postDAO->newPost($post);
+                $res = $postDAO->newPost($post);
+
+                print_r($res);
 
             }else{
                 $_SESSION['form_key'] = md5('Y-M-d h:s:i');

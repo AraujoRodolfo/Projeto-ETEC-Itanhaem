@@ -2,8 +2,13 @@
 	<input type="text" name="titulo" placeholder="titulo"><br>
 	<input type="text" name="descricao" placeholder="descricao"><br>
 	<select name="status">
-		<option value="inativo" selected>inativo</option>
-		<option value="ativo" >ativo</option>
+		<option value="inativo" selected> inativo </option>
+		<option value="ativo" >ativo </option>
+	</select><br>
+
+	<select name="tipo">
+		<option value="noticia" selected> noticia </option>
+		<option value="evento" >evento </option>
 	</select><br>
 
 	<input type="checkbox" name="marcada" id="marcada" value="1">
