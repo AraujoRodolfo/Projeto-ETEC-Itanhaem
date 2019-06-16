@@ -1,0 +1,40 @@
+/* definindo as vars de cores aqui */
+:root{
+    --fundo:#1A1A1A;
+    --fundoclaro:#333333;
+    --cor:#3cb4b4;
+    --corescuro:#275858;
+}
+/* Coisas Uteis */
+.corescuro{
+    color:var(--corescuro);
+}
+.divider {
+    height: 1px;
+    overflow: hidden;
+    background-color:var(--fundoclaro);
+  }
+.list-group-item{
+    background-color: var(--fundo);
+    color:var(--cor);
+    border-color: var(--fundoclaro);
+    padding:0.5rem;
+    font-size: 13px;
+}
+/* footer */
+.footer-color{
+    background-color: var(--fundo);
+    color:var(--cor);
+}
+.list-group-item:hover{
+    color: var(--corescuro);
+    border-radius: 3px;
+    border:1px solid;
+    background-color: var(--fundoclaro);
+}
+.copyright-font{
+    font-weight: bold;
+}
+.img-group{
+    object-fit: cover;
+}
