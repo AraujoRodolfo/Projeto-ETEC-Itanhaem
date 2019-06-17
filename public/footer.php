@@ -11,7 +11,6 @@
 </head>
 <body>
     <h1>TesteS ouvindo agora vai</h1>
-</body>
 <footer>
     <div class="footer-color">
         <div class="container-fluid">
@@ -126,4 +125,5 @@
         </div>
     </div>
 </footer>
+</body>
 </html>
