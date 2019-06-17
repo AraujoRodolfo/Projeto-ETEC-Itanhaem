@@ -13,7 +13,7 @@
 			//variavel que irá retornar o resultado
 			$ret = false;
 			//colunas da tabela post que deverão ser mostrados
-			$colunas 	= "nm_post, ds_post, dt_post, ds_tipo ,programado,";
+			$colunas 	= "id_post,nm_post, ds_post, dt_post, ds_tipo ,programado,";
 			//dados da tabela de usuarios
 			$colunas	.= " nm_usuario, nm_img_perfil ";
 			//array com as tabelas que deverão se juntar na query (JOIN)
