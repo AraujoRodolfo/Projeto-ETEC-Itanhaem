@@ -15,16 +15,16 @@
 			//colunas da tabela post que deverão ser mostrados
 			$colunas 	= "nm_post, ds_post, dt_post, ds_tipo ,programado,";
 			//dados da tabela de usuarios
-			$colunas	.= " nome, foto ";
+			$colunas	.= " nm_usuario, nm_img_perfil ";
 			//array com as tabelas que deverão se juntar na query (JOIN)
 			$join = [0 =>	[
 				'nm_tab1' 	=> 'usuario',
 				'nm_tab2'	=>	'post',
-				'col_tab1' 	=> 'id',
-				'col_tab2' 	=> 'usuario']
+				'col_tab1' 	=> 'id_usuario',
+				'col_tab2' 	=> 'id_usuario']
 			];
 			//condiçao para a query
-			$condicao	= 'status_post = "ativo"';
+			$condicao	= 'ic_status = "ativo"';
 			//ordenar por...
 			$ordenar	= "dt_post DESC";
 			//chama o metodo Select (metodo da DAO, de quem esta classe é filha)
@@ -35,15 +35,17 @@
 				for($i = 0; $i < count($res); $i++ ){
 					//cria um objeto Post e instancia ele em um indice de 1 array
 					$ret[$i] = new ModelPost();
+
 					//insere neste objeto as informações referentes a ele que vieram no array
-					$ret[$i]->setTitulo( $this->decrypt($res[$i]['titulo'], CRYPT_KEY) );
-					$ret[$i]->setDescricao($this->decrypt($res[$i]['descricao'], CRYPT_KEY) );
+					$ret[$i]->setId( $res[$i]['id_post'] );
+					$ret[$i]->setTitulo( $this->decrypt($res[$i]['nm_post'], CRYPT_KEY) );
+					$ret[$i]->setDescricao($this->decrypt($res[$i]['ds_post'], CRYPT_KEY) );
 					$ret[$i]->setDtPost($res[$i]['dt_post']);
 					$ret[$i]->setProgramado($res[$i]['programado']);
 					//cria um objeto Usuario e insere nele as informações referentes a ele
 					$autor = new ModelUsuario();
-					$autor->setNome($this->decrypt($res[$i]['nome'], CRYPT_KEY));
-					$autor->setFoto($this->decrypt($res[$i]['foto'], CRYPT_KEY));
+					$autor->setNome($this->decrypt($res[$i]['nm_usuario'], CRYPT_KEY));
+					$autor->setFoto($this->decrypt($res[$i]['nm_img_perfil'], CRYPT_KEY));
 					//insere o objeto usuario dentro do atributo autor do post.
 					$ret[$i]->setAutor($autor);
 				}

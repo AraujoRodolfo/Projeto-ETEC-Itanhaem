@@ -55,6 +55,7 @@
             $res = false;
             //começa montando a query apenas com as colunas e o nome da tabela
             $sql = "SELECT $colunas FROM $tabela ";
+
             //se tiver tabelas para "juntar"...
             if($join){
                 //percorre o array e concatena elas na variavel $sql
@@ -68,12 +69,13 @@
                 }
             }
             //se houver condição para o select, adiciona a condição na query.
-            if($condicao){ $sql .= " WHERE $condicao "; }
+            if($condicao){ $sql .= " WHERE {$tabela}.$condicao "; }
             //se houver uma ordenação no select, a adiciona na query.
             if($ordenar){ $sql .= " ORDER BY $ordenar "; }
             //se houver um limite para a quantidade de linhas selecionadas, a adiciona na query.
             if($alcance){ $sql .= " LIMIT $alcance "; }
             //o atributo DB recebe a conexao com o DB e prepara a query
+
             $this->DB = $this->connectDB()->prepare($sql);
             //executa a query.
             $this->DB->execute();
